@@ -1,0 +1,20 @@
+meta {
+  name: Delete Phone
+  type: http
+  seq: 9
+}
+
+delete {
+  url: http://localhost:5282/users/:id/phones/:phone
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+  phone: 
+}
+
+settings {
+  encodeUrl: true
+}

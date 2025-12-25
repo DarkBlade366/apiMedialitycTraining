@@ -1,0 +1,26 @@
+meta {
+  name: ChangeStatus User
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:5282/users/status/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 92b79cec-9cb6-42fc-97f2-a754ac188c3e
+}
+
+body:json {
+  {
+    "isActive": true
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

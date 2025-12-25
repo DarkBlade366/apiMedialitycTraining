@@ -1,8 +1,8 @@
 namespace ApiMedialityc.Features.Users.Enum
 {
-    public enum Rol
+    public enum Role
     {
         User,
         Admin
-    }
+    }   
 }

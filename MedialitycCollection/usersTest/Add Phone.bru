@@ -1,0 +1,19 @@
+meta {
+  name: Add Phone
+  type: http
+  seq: 7
+}
+
+put {
+  url: http://localhost:5282/users/:id/phones
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+settings {
+  encodeUrl: true
+}

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using ApiMedialityc.Data;
+using ApiMedialityc.Features.Common.Security;
 using ApiMedialityc.Features.Users.Commands;
 using ApiMedialityc.Features.Users.DTOs;
 using ApiMedialityc.Features.Users.Enum;
@@ -13,6 +14,7 @@ using FastEndpoints;
 namespace ApiMedialityc.Features.Users.Handlers
 {
     public class CreateUserHandler
+        : CommandHandler<CreateUserCommand, CreateUserResponseDto>
     {
         private readonly ApiDbContext _context;
 
@@ -21,34 +23,34 @@ namespace ApiMedialityc.Features.Users.Handlers
             _context = context;
         }
 
-        public async Task<CreateUserResponseDto> HandlerAsync(CreateUserCommand c)
+        public override async Task<CreateUserResponseDto> ExecuteAsync(CreateUserCommand c, CancellationToken ct)
         {
-            var dto = c._request;
+            var dto = c.Request;
 
             //Crear usuario
             var user = new User{
-                id = Guid.NewGuid(),
-                fullName = dto.fullName,
-                isActive = true,
-                password = BCrypt.Net.BCrypt.HashPassword(dto.password),
-                rol = Rol.User
+                Id = Guid.NewGuid(),
+                FullName = dto.FullName,
+                IsActive = true,
+                Password = PasswordHasher.Hash(dto.Password),
+                Role = Role.User
             };
 
             //Emails
-            user.emails = dto.emails
+            user.Emails = dto.Emails
                 .Select(e => new UserEmail
                 {
-                    email = e.email,
-                    userId = user.id
+                    Email = e.Email,
+                    UserId = user.Id
                 })
                 .ToList();
 
             //Phones
-            user.phones = dto.phones
+            user.Phones = dto.Phones
                 .Select(p=>new UserPhone
                 {
-                    phone = p.phone,
-                    userId = user.id
+                    Phone = p.Phone,
+                    UserId = user.Id
                 })
                 .ToList();
 
@@ -58,9 +60,9 @@ namespace ApiMedialityc.Features.Users.Handlers
 
             return new CreateUserResponseDto
             {
-                id = user.id,
-                message = "Su Usuario fue creado con exito"
+                Id = user.Id,
+                Message = "Su Usuario fue creado con exito"
             };
-        } 
+        }
     }
 }

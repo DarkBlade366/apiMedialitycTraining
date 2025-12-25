@@ -7,6 +7,6 @@ namespace ApiMedialityc.Features.Users.DTOs
 {
     public class UserPhoneDto
     {
-        public string phone { get; set; } =string.Empty;
+        public string Phone { get; set; } =string.Empty;
     }
 }

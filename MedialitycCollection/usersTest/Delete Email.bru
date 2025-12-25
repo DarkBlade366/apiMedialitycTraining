@@ -1,0 +1,20 @@
+meta {
+  name: Delete Email
+  type: http
+  seq: 8
+}
+
+delete {
+  url: http://localhost:5282/users/:id/emails/:email
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+  email: 
+}
+
+settings {
+  encodeUrl: true
+}

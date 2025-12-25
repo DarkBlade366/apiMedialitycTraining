@@ -1,0 +1,20 @@
+meta {
+  name: Obtener Id User
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:5282/users/:id
+  body: text
+  auth: inherit
+}
+
+params:path {
+  id: 92b79cec-9cb6-42fc-97f2-a754ac188c3e
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
