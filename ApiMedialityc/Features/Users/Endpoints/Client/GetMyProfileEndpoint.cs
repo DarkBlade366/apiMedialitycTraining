@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using ApiMedialityc.Features.Users.DTOs;
 using ApiMedialityc.Features.Users.Queries;
@@ -8,7 +10,7 @@ using FastEndpoints;
 
 namespace ApiMedialityc.Features.Users.Endpoints.Client
 {
-    public class GetMyProfileEndpoint 
+    public class GetMyProfileEndpoint
         : EndpointWithoutRequest<GetMyProfileResponseDto>
     {
         public override void Configure()
@@ -24,7 +26,7 @@ namespace ApiMedialityc.Features.Users.Endpoints.Client
 
         public override async Task HandleAsync(CancellationToken ct)
         {
-            var userId = Guid.Parse(User.Claims.First(c => c.Type == "sub").Value);
+            var userId = Guid.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
 
             var query = new GetMyProfileQuery(userId);
             var response = await query.ExecuteAsync(ct);

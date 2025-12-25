@@ -14,7 +14,7 @@ namespace ApiMedialityc.Features.Users.Endpoints.Admin
     {
         public override void Configure()
         {
-            Put ("/admin/status/{id}");
+            Put ("/users/status/{id}");
             Roles("Admin");
             Validator<ChangeStatusUserValidation>();
             Summary(s =>

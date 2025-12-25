@@ -18,7 +18,7 @@ namespace ApiMedialityc.Features.Users.Handlers
     {
         private readonly ApiDbContext _context;
 
-        public GetUsersHandler (ApiDbContext context)
+        public GetUsersHandler(ApiDbContext context)
         {
             _context = context;
         }
@@ -32,41 +32,45 @@ namespace ApiMedialityc.Features.Users.Handlers
                 .Include(u => u.Phones)
                 .AsQueryable();
 
-                if (!string.IsNullOrEmpty(req.FullName))
-                {
-                    usersQuery = usersQuery.Where(u => u.FullName.Contains(req.FullName));
-                }
+            if (!string.IsNullOrEmpty(req.FullName))
+            {
+                usersQuery = usersQuery.Where(u => u.FullName.Contains(req.FullName));
+            }
 
-                if (req.IsActive.HasValue)
-                {
-                    usersQuery = usersQuery.Where(u => u.IsActive == req.IsActive.Value);
-                }
+            if (req.IsActive.HasValue)
+            {
+                usersQuery = usersQuery.Where(u => u.IsActive == req.IsActive.Value);
+            }
 
-                var totalItemsDb = await usersQuery.CountAsync();
+            var totalItemsDb = await usersQuery.CountAsync();
 
-                var users = await usersQuery
-                    .Skip((req.Page - 1) * req.PageSize)  // Salta los elementos previos según la página actual
-                    .Take(req.PageSize)                  // Toma solo la cantidad de elementos que caben en la página
-                    .ToListAsync();
+            var users = await usersQuery
+                .OrderBy(u => u.Id)                    // Ordena por Id para consistencia en la paginación
+                .Skip((req.Page - 1) * req.PageSize)  // Salta los elementos previos según la página actual
+                .Take(req.PageSize)                  // Toma solo la cantidad de elementos que caben en la página
+                .ToListAsync();
 
             return new PagedResponse<GetUsersResponseDto>
             {
-                Items = users.Select(u => new GetUsersResponseDto{
+                Items = users.Select(u => new GetUsersResponseDto
+                {
                     Id = u.Id,
                     FullName = u.FullName,
                     IsActive = u.IsActive,
                     Role = u.Role,
-                    Emails = u.Emails.Select(e => new UserEmailDto{
+                    Emails = u.Emails.Select(e => new UserEmailDto
+                    {
                         Email = e.Email
                     }).ToList(),
-                    Phones = u.Phones.Select(p => new UserPhoneDto{
+                    Phones = u.Phones.Select(p => new UserPhoneDto
+                    {
                         Phone = p.Phone
                     }).ToList(),
                 }).ToList(),
                 Page = req.Page,
                 PageSize = req.PageSize,
                 TotalItems = totalItemsDb,
-                TotalPages = (int) Math.Ceiling((double)totalItemsDb / (double) req.PageSize)
+                TotalPages = (int)Math.Ceiling((double)totalItemsDb / (double)req.PageSize)
             };
         }
     }

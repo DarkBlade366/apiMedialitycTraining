@@ -15,7 +15,7 @@ namespace ApiMedialityc.Features.Users.Endpoints.Admin
     {
         public override void Configure()
         {
-            Post("/admin/create");
+            Post("/users/create");
             Roles("Admin");
             Validator<CreateUserValidation>();
             Summary(s =>

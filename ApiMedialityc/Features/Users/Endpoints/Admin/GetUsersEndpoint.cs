@@ -16,7 +16,7 @@ namespace ApiMedialityc.Features.Users.Endpoints.Admin
     {
         public override void Configure()
         {
-            Get ("/admin/list");
+            Get ("/users/list");
             Roles("Admin");
             Validator<GetUsersValidation>(); 
             Summary(s =>
@@ -33,6 +33,7 @@ namespace ApiMedialityc.Features.Users.Endpoints.Admin
 
         public override async Task HandleAsync(GetUsersRequestDto req, CancellationToken ct)
         {
+            Console.WriteLine("ads");
             var query = new GetUsersQuery(req);
             var response = await query.ExecuteAsync(ct);
             await Send.OkAsync(response, ct);
