@@ -18,7 +18,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Conexion con DB
 var connection = builder.Configuration.GetConnectionString("DbMedialityc");
 builder.Services.AddDbContext<ApiDbContext>(options =>
-    options.UseNpgsql(connection)
+    options
+    .UseNpgsql(connection, npgsqlOptions =>
+        npgsqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery))
+    .ConfigureWarnings(warnings => warnings.Throw(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.MultipleCollectionIncludeWarning))
 ); 
 // Configuración JWT 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme) 
@@ -40,27 +43,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     }); 
 builder.Services.AddAuthorization();
-//Configuracion del Swagger
 builder.Services
     .AddFastEndpoints()
     .SwaggerDocument(o =>
     {
-        //o.EnableJWTBearerAuth = false;
         o.DocumentSettings = s =>
         {
             s.Title = "Api Medialityc Training";
             s.Description = "API for Medialitic company for user, reservation and resource management";
             s.Version = "Only User";
-        /*
-            s.AddAuth("Bearer", new()
-        {
-            Type = OpenApiSecuritySchemeType.Http,
-            Scheme = JwtBearerDefaults.AuthenticationScheme,
-            BearerFormat = "JWT",
-        });
-        */  
         };
     });
+
 
 builder.Services.AddEndpointsApiExplorer();
 
