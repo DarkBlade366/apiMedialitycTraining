@@ -7,7 +7,7 @@ namespace ApiMedialityc.Features.Users.DTOs
 {
     public class CreateUserResponseDto
     {
-        public Guid id { get; set; }
-        public string message { get; set; } = string.Empty;
+        public Guid Id { get; set; }
+        public string Message { get; set; } = string.Empty;
     }
 }

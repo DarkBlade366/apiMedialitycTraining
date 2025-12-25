@@ -7,6 +7,6 @@ namespace ApiMedialityc.Features.Users.DTOs
 {
     public class UserEmailDto
     {
-        public string email { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
     }
 }

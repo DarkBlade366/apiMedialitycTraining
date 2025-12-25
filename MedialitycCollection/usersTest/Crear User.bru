@@ -5,11 +5,29 @@ meta {
 }
 
 post {
-  url: http://localhost:5282/users
-  body: none
+  url: http://localhost:5282/users/create
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "fullName": "Dany Rojas",
+    "password": "asdqhqZH",
+    "emails": [
+      {
+        "email": "daniRojagmail.com"
+      }
+    ],
+    "phones": [
+      {
+        "phone": "+53 12324146"
+      }
+    ]
+  }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

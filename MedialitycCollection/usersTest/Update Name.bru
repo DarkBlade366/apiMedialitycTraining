@@ -1,0 +1,19 @@
+meta {
+  name: Update Name
+  type: http
+  seq: 5
+}
+
+put {
+  url:  http://localhost:5282/users/:id/name
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+settings {
+  encodeUrl: true
+}

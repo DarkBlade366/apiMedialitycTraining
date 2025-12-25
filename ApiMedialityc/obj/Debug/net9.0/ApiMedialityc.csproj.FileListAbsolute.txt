@@ -14,7 +14,6 @@ D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\FluentValidation.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Humanizer.dll
-D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.Build.Locator.dll
@@ -32,8 +31,6 @@ D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
-D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
-D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.OpenApi.dll
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Mono.TextTemplating.dll
@@ -132,6 +129,7 @@ D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\ApiMedialityc.csproj.CoreCompileInputs.cache
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\ApiMedialityc.MvcApplicationPartsAssemblyInfo.cs
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\ApiMedialityc.MvcApplicationPartsAssemblyInfo.cache
+D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\ApiMedialityc.sourcelink.json
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\rjimswa.dswa.cache.json
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
@@ -146,3 +144,6 @@ D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\ApiMedialityc.pdb
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\ApiMedialityc.genruntimeconfig.cache
 D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\obj\Debug\net9.0\ref\ApiMedialityc.dll
+D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\Workspace\!!PROYECTOS GRANDES\medialityc_training\ApiMedialityc\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

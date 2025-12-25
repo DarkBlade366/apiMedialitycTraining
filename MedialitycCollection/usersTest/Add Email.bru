@@ -1,0 +1,19 @@
+meta {
+  name: Add Email
+  type: http
+  seq: 6
+}
+
+put {
+  url:  http://localhost:5282//users/:id/emails
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+settings {
+  encodeUrl: true
+}
