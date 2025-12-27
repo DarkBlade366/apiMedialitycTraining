@@ -8,8 +8,8 @@ La API permite la gestión de:
 
 - Usuarios
 - Recursos (Vehículos)
-- Ventas / Reservas
-- Reportes
+- Reservas (Ventas)
+- Reportes (1 en vehículo y otro en venta)
 
 El foco del proyecto no es únicamente que la solución funcione, sino demostrar **criterio técnico**, **estructura limpia** y **separación clara de responsabilidades**.
 
@@ -52,6 +52,8 @@ Este patrón se aplica de forma **consistente en todo el proyecto**.
 
 - Registrarse como nuevo usuario
 - Logearse como usuario activo (usuario inactivo tiene que ser activado antes de logearse)
+
+---
 
 ## Módulo de Usuarios
 
@@ -123,6 +125,8 @@ Estados posibles del vehiculo:
 - Al cancelar una venta:
   - Se devuelve la cantidad al inventario
 - Usuarios inactivos no pueden realizar ventas
+
+---
 
 ## Paginación y Filtros
 
