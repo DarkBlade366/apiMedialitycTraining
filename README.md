@@ -51,7 +51,7 @@ Este patrón se aplica de forma **consistente en todo el proyecto**.
 ### Funcionalidades
 
 - Registrarse como nuevo usuario
-- Logearse como usuario activo
+- Logearse como usuario activo (usuario inactivo tiene que ser activado antes de logearse)
 
 ## Módulo de Usuarios
 
