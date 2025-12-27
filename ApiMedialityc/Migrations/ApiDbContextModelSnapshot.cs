@@ -22,6 +22,38 @@ namespace ApiMedialityc.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("ApiMedialityc.Features.Reservations.Models.Sale", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime>("SaleDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("VehicleId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("VehicleId", "UserId")
+                        .HasDatabaseName("Sales_VehicleUser");
+
+                    b.ToTable("Sales");
+                });
+
             modelBuilder.Entity("ApiMedialityc.Features.Users.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -88,6 +120,98 @@ namespace ApiMedialityc.Migrations
                     b.ToTable("UserPhones");
                 });
 
+            modelBuilder.Entity("ApiMedialityc.Features.Vehicles.Models.Vehicle", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsSold")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Plate")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Price")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("VehicleInventoryId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Plate")
+                        .IsUnique();
+
+                    b.HasIndex("VehicleInventoryId");
+
+                    b.ToTable("Vehicles");
+                });
+
+            modelBuilder.Entity("ApiMedialityc.Features.Vehicles.Models.VehicleInventory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("AvailableQuantity")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsAvailable")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("boolean")
+                        .HasComputedColumnSql("CASE WHEN \"AvailableQuantity\" > 0 THEN true ELSE false END", true);
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VehicleInventories");
+                });
+
+            modelBuilder.Entity("ApiMedialityc.Features.Reservations.Models.Sale", b =>
+                {
+                    b.HasOne("ApiMedialityc.Features.Users.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ApiMedialityc.Features.Vehicles.Models.Vehicle", "Vehicle")
+                        .WithMany("Sales")
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("Vehicle");
+                });
+
             modelBuilder.Entity("ApiMedialityc.Features.Users.Models.UserEmail", b =>
                 {
                     b.HasOne("ApiMedialityc.Features.Users.Models.User", "User")
@@ -110,11 +234,32 @@ namespace ApiMedialityc.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ApiMedialityc.Features.Vehicles.Models.Vehicle", b =>
+                {
+                    b.HasOne("ApiMedialityc.Features.Vehicles.Models.VehicleInventory", "VehicleInventory")
+                        .WithMany("Vehicles")
+                        .HasForeignKey("VehicleInventoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("VehicleInventory");
+                });
+
             modelBuilder.Entity("ApiMedialityc.Features.Users.Models.User", b =>
                 {
                     b.Navigation("Emails");
 
                     b.Navigation("Phones");
+                });
+
+            modelBuilder.Entity("ApiMedialityc.Features.Vehicles.Models.Vehicle", b =>
+                {
+                    b.Navigation("Sales");
+                });
+
+            modelBuilder.Entity("ApiMedialityc.Features.Vehicles.Models.VehicleInventory", b =>
+                {
+                    b.Navigation("Vehicles");
                 });
 #pragma warning restore 612, 618
         }
