@@ -35,6 +35,11 @@ namespace ApiMedialityc.Features.Auth.Handlers
                 throw new Exception("Credenciales inválidas");
             }
 
+            if (!user.IsActive)
+            {
+                throw new Exception("Esta usted inactivo, habla con el administrador para activar su cuenta");
+            }
+
             var token = JwtTokenGenerator.GenerateToken(user.Id, user.FullName, user.Role.ToString(), _config); 
 
             return new LoginResponseDto
