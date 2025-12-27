@@ -1,16 +1,15 @@
 meta {
-  name: Obtener Lista Users
+  name: Registrer
   type: http
   seq: 2
 }
 
-get {
-  url: http://localhost:5282/users
+post {
+  url: ttp://localhost:5282/auth/register
   body: none
   auth: inherit
 }
 
 settings {
   encodeUrl: true
-  timeout: 0
 }

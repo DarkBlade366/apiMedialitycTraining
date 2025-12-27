@@ -1,0 +1,21 @@
+meta {
+  name: Obtener Lista Users
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:5282/users/list?page=1&pageSize=100
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 1
+  pageSize: 100
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

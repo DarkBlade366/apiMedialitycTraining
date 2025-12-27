@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ApiMedialityc.Features.Sales.DTOs
+{
+    public class GetSaleByIdResponseDto
+    {
+        public Guid SaleId { get; set; }
+
+        public string Status { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+        // Usuario
+        public Guid UserId { get; set; }
+        public string UserName { get; set; } = string.Empty;
+
+        // Vehículo
+        public Guid VehicleId { get; set; }
+        public string VehicleBrand { get; set; } = string.Empty;
+        public string VehicleModel { get; set; } = string.Empty;
+        public string VehicleType { get; set; } = string.Empty;
+    }
+}
