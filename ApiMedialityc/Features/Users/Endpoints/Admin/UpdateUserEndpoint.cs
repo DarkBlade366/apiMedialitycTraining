@@ -4,28 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApiMedialityc.Features.Users.Commands;
 using ApiMedialityc.Features.Users.DTOs;
-using ApiMedialityc.Features.Users.Handlers;
 using ApiMedialityc.Features.Users.Validations;
 using FastEndpoints;
 
 namespace ApiMedialityc.Features.Users.Endpoints.Admin
 {
-    public class CreateUserEndpoint
-        : Endpoint<CreateUserRequestDto, CreateUserResponseDto>
+    public class UpdateUserEndpoint
+        : Endpoint<UpdateUserRequestDto, UpdateUserResponseDto>
     {
         public override void Configure()
         {
-            Post("/users");
+            Put("/users/{id}");
             Roles("Admin");
-            Validator<CreateUserValidation>();
+            Validator<UpdateUserValidation>();
             Summary(s =>
             {
-                s.Summary = "Creacion de un usuario";
-                s.Description = "Crea un nuevo usuario, por defecto es User";
-                s.ExampleRequest = new CreateUserRequestDto 
+                s.Summary = "Actualiza un usuario";
+                s.Description = "Actualiza un usuario existente";
+                s.ExampleRequest = new UpdateUserRequestDto 
                 { 
-                    FullName = "Name FirsLastName SecondLastName", 
-                    Password = "xxxxxxxxx", 
+                    FullName = "Name FirstLastName SecondLastName",
                     Emails = new List<UserEmailDto> 
                     { 
                         new UserEmailDto { Email = "correo@gmail.com" } 
@@ -38,9 +36,11 @@ namespace ApiMedialityc.Features.Users.Endpoints.Admin
             });
         }
 
-        public override async Task HandleAsync(CreateUserRequestDto req, CancellationToken ct)
+        public override async Task HandleAsync(UpdateUserRequestDto req, CancellationToken ct)
         {
-            var command = new CreateUserCommand(req);
+            req.Id = Route<Guid>("id");
+            
+            var command = new UpdateUserCommand(req);
             var response = await command.ExecuteAsync(ct);
             await Send.OkAsync(response, ct);
         }

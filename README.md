@@ -20,7 +20,7 @@ El foco del proyecto no es únicamente que la solución funcione, sino demostrar
 - **.NET 9**
 - **FastEndpoints**
 - **Entity Framework Core**
-- **Base de datos relacional:** <<PostgreSQL>>
+- **Base de datos relacional:** PostgreSQL
 - **JWT (JSON Web Tokens)** para autenticación
 - **Swagger** para documentación de la API
 - **BCrypt** para hasheo de contraseñas
@@ -60,7 +60,7 @@ Este patrón se aplica de forma **consistente en todo el proyecto**.
 ### Funcionalidades
 
 - Crear usuarios (solo admin)
-- Obtener usario por Id (solo admin)
+- Obtener usuario por Id (solo admin)
 - Obtener usuario segun paginacion (solo admin)
 - Cambiar estado de un usuario (solo admin)
 - Añadir o eliminar correos y telefonos, si tiene solo 1 no se puede eliminar (admin y user)
@@ -188,3 +188,64 @@ Cada endpoint define explícitamente los roles permitidos.
 
 ```bash
 git clone <<https://github.com/DarkBlade366/apiMedialitycTraining.git>>
+```
+2. Crear la base de datos en PostgreSQL:
+
+```sql
+CREATE DATABASE medialityc_training2.0;
+```
+3. Configurar el archivo appsettings.json:
+
+```json
+{
+  "ConnectionStrings": {
+    "DbMedialityc": "Host=localhost;Port=5432;Database=medialityc_training2.0;Username=postgres;Password=TU_PASSWORD"
+  },
+  "Jwt": {
+    "Key": "CLAVE_SECRETA_LARGA_Y_SEGURA",
+    "Issuer": "ApiMedialityc",
+    "Audience": "ApiMedialitycUsers",
+    "AccessTokenMinutes": 60
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
+
+4. Aplicar migraciones:
+
+```bash
+dotnet ef migrations add InitialCreate
+
+dotnet ef database update
+```
+
+5. Ejecutar el proyecto:
+
+```bash
+dotnet run
+```
+
+6. Acceder a Swagger:
+
+```
+https://localhost:5282/swagger
+```
+
+7. Autenticación JWT en Swagger:
+  - Pegar el token en el apartado de Authorize
+  - Usuario de prueba como admin: Cambiar desde la DATABASE
+  - Usuario de prueba como user: Crear o Registrar tu propio usuario 
+
+### Agregar Package:
+
+```bash
+dotnet add package nombrePaquete
+```
+
+### Paquetes usados en: `ApiMedialityc.csproj`

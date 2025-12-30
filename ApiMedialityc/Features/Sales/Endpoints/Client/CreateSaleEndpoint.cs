@@ -16,7 +16,7 @@ namespace ApiMedialityc.Features.Sales.Endpoints.Client
     {
         public override void Configure()
         {
-            Post("/sales/create");
+            Post("/sales");
             Roles("Admin", "User");
             Validator<CreateSaleValidation>();
             Summary(s =>

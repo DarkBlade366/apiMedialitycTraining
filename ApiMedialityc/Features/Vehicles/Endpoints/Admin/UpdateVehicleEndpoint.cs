@@ -16,7 +16,7 @@ namespace ApiMedialityc.Features.Vehicles.Endpoints.Admin
     {
         public override void Configure()
         {
-            Put("/vehicles/update/{id}");
+            Put("/vehicles/{id}");
             Roles("Admin");
             Validator<UpdateVehicleValidation>();
             Summary(s =>

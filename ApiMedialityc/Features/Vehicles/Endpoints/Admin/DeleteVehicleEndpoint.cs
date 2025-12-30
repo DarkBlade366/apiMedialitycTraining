@@ -16,7 +16,7 @@ namespace ApiMedialityc.Features.Vehicles.Endpoints.Admin
     {
         public override void Configure()
         {
-            Delete("/vehicles/delete/{id}");
+            Delete("/vehicles/{id}");
             Roles("Admin");
             Validator<DeleteVehicleValidation>();
             Summary(s =>

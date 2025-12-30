@@ -15,7 +15,7 @@ namespace ApiMedialityc.Features.Vehicles.Endpoints
     {
         public override void Configure()
         {
-            Post("/vehicles/create");
+            Post("/vehicles");
             Roles("Admin");
             Validator<CreateVehicleValidation>();
             Summary(s =>

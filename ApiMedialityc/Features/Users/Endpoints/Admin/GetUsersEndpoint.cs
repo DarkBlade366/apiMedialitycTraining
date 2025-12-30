@@ -16,7 +16,7 @@ namespace ApiMedialityc.Features.Users.Endpoints.Admin
     {
         public override void Configure()
         {
-            Get ("/users/list");
+            Get ("/users");
             Roles("Admin");
             Validator<GetUsersValidation>(); 
             Summary(s =>
