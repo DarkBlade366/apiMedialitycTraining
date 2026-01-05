@@ -16,6 +16,8 @@ namespace ApiMedialityc.Features.Users.Models
         public bool IsActive { get; set;}
         public Role Role { get; set; }
 
+        public bool MustChangePassword { get; set; } = false;
+
         public ICollection<UserEmail> Emails { get; set;} = new List<UserEmail>();
         public ICollection<UserPhone> Phones { get; set;} = new List<UserPhone>();
     }

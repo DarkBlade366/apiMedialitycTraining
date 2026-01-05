@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using ApiMedialityc.Data;
@@ -40,10 +41,21 @@ namespace ApiMedialityc.Features.Auth.Handlers
                 throw new Exception("Esta usted inactivo, habla con el administrador para activar su cuenta");
             }
 
+            string Message = string.Empty;
+            if (user.MustChangePassword)
+            {
+                Message = "Para su seguridad cambie la cotraseña inmediatamente";
+            }
+            else
+            {
+                Message = "Se ha logeado correctamente";
+            }
+
             var token = JwtTokenGenerator.GenerateToken(user.Id, user.FullName, user.Role.ToString(), _config); 
 
             return new LoginResponseDto
             {
+                Message = Message,
                 Token = token,
                 Expiration = DateTime.UtcNow.AddMinutes(int.Parse(_config["Jwt:AccessTokenMinutes"] ?? "60"))
             };

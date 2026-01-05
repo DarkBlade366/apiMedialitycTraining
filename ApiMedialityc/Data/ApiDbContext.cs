@@ -36,6 +36,7 @@ namespace ApiMedialityc.Data
                 entity.Property(u => u.FullName).IsRequired();
                 entity.Property(u => u.Password).IsRequired();
                 entity.Property(u => u.IsActive).IsRequired();
+                entity.Property(u => u.MustChangePassword).IsRequired();
                 entity.Property(u => u.Role).IsRequired()
                     .HasConversion<string>();
 

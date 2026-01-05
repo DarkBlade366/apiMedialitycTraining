@@ -6,6 +6,7 @@ using ApiMedialityc.Features.Common;
 using ApiMedialityc.Features.Users.DTOs;
 using ApiMedialityc.Features.Users.Handlers;
 using ApiMedialityc.Features.Users.Queries;
+using ApiMedialityc.Infrastructure;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NSwag;
+
 var builder = WebApplication.CreateBuilder(args);
 // Conexion con DB
 var connection = builder.Configuration.GetConnectionString("DbMedialityc");
@@ -59,6 +61,8 @@ builder.Services
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
+
+await DatabaseSeeder.SeedAsync(app.Services);
 
 app.UseAuthentication(); 
 app.UseAuthorization();

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiMedialityc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77bfff6cfaee6014f7179f436bc5b3ffd5a5e063")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55328877a0ea869e4f580674ec256571cfd46ec8")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiMedialityc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiMedialityc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
